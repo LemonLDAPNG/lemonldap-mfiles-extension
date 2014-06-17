@@ -17,12 +17,17 @@ Installation
 
 Install this extension like documented on [LemonLDAP::NG project wiki](http://lemonldap-ng.org/documentation/latest/customfunctions):
 + Load module in Handler apache configuration file
+
     PerlRequire /root/lemonldap-ng/MFilesExtension.pm
+
 + Declare `MFilesExtension::getMFilesToken` in custom functions
 + Desactive Safe jail
 + Store password in session
 + Create a macro to fetch the token at authentication step:
+
     MFilesToken => getMFilesToken($uid,$_password,"{Vault Guid}","https://xxx/REST/server/authenticationtokens")
+
 + In virtual host, add the `X-Authentication` header:
+
     X-Authentication => $MFilesToken
 
